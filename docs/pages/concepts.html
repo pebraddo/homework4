@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-08-27">
+<meta name="dcterms.date" content="2025-09-12">
 
 <title>Conceptual Questions – Homework 4 Site</title>
 <style>
@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-08-27</p>
+      <p class="date">2025-09-12</p>
     </div>
   </div>
   
@@ -191,7 +191,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Answers go here!</p>
+<ol type="1">
+<li><p>If your working directory is <code>myfolder/homework/</code>, what relative path would you specify to get the file located at <code>myfolder/MyData.csv</code>?</p>
+<blockquote class="blockquote">
+<p><code>../MyData.csv</code></p>
+</blockquote></li>
+<li><p>What are the major benefits of using R projects?</p>
+<blockquote class="blockquote">
+<p>By using R Projects, the separation of associated documents, data sources, and other files for each project is maintained. Each project also serves as a working directory, so sharing and collaborating with others is easier.</p>
+</blockquote></li>
+<li><p>What is git and what is github?</p>
+<blockquote class="blockquote">
+<p>Git is a version control software and Github is a tool where Git is hosted.</p>
+</blockquote></li>
+<li><p>What are the two main differences between a tibble and a data.frame?</p>
+<blockquote class="blockquote">
+<p>Tibbles print in a more efficient and interpret-able way than data frames. They show the first couple of rows and columns and a count of the number of total observations and columns. Tibbles are also more strict and require consistent data types than data frames.</p>
+</blockquote></li>
+<li><p>Rewrite the following nested function call using BaseR’s chaining operator:</p>
+<p><code>arrange(filter(select(as_tibble(iris), starts_with("Petal"), Species), Petal.Length &lt;1.55), Species)</code></p>
+<blockquote class="blockquote">
+<p><code>iris |&gt;</code></p>
+<p><code>as_tibble() |&gt;</code></p>
+<p><code>select(starts_with("Petal"), Species) |&gt;</code></p>
+<p><code>filter(Petal.Length &lt;1.55) |&gt;</code></p>
+<p><code>arrange(Species)</code></p>
+</blockquote></li>
+</ol>
 
 
 
