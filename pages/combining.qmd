@@ -6,4 +6,55 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Answers go here!
+Let's begin by ensuring we have the right libraries imported for our work: readxl and tidyverse.
+
+Next, we want to read in the excel file with the white wine data and the second sheet within the file that has the variable names.
+
+We want to reset our variable names in the white wine data tibble to the variable names in the second sheet, but we have to make this tibble into a data frame to use it!
+
+```{r}
+library(readxl)
+library(tidyverse)
+white_wine <- read_excel('../white-wine.xlsx')
+white_wine
+variables <- read_excel('../white-wine.xlsx', sheet = excel_sheets('../white-wine.xlsx')[2])
+variables
+
+white_wine <- setNames(white_wine, as.data.frame(variables)[1:12,1])
+white_wine
+```
+
+Now, we want to add a column called `type` to the `white_wine` tibble and denote all wines as 'white'.
+
+```{r}
+white_wine <- white_wine |>
+  mutate(type = 'white')
+```
+
+Let's do the same thing for the red wine data, but this time from a different type of source: one that is separated with semi-colons ';'. We read in the data from the URL using `read_delim` and setting the names the same way as before. We can then add the `type` field and denote all as 'red'.
+
+```{r}
+red_wine <- read_delim('https://www4.stat.ncsu.edu/~online/datasets/red-wine.csv', delim=';')
+red_wine <- setNames(red_wine, as.data.frame(variables)[1:12,1])
+red_wine
+red_wine <- red_wine |>
+  mutate(type = 'red')
+red_wine
+```
+
+Now, we want to combine the `white_wine` and `red_wine` tibbles together using `bind_rows`.
+
+```{r}
+all_wine <- bind_rows(white_wine, red_wine)
+all_wine
+```
+
+From here, we can filter by quality and alcohol and sort descending by quality before selecting the desired columns and the mean and standard deviation of alcohol columns.
+
+```{r}
+all_wine |>
+  filter(quality > 6.5 & alcohol < 132) |>
+  arrange(desc(quality)) |>
+  select(contains('acid'), alcohol, type, quality) |>
+  mutate(mean_alcohol = mean(alcohol), stddev_alcohol = sd(alcohol))
+```

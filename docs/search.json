@@ -15,7 +15,7 @@
     "href": "pages/concepts.html",
     "title": "Conceptual Questions",
     "section": "",
-    "text": "Answers go here!",
+    "text": "If your working directory is myfolder/homework/, what relative path would you specify to get the file located at myfolder/MyData.csv?\n\n../MyData.csv\n\nWhat are the major benefits of using R projects?\n\nBy using R Projects, the separation of associated documents, data sources, and other files for each project is maintained. Each project also serves as a working directory, so sharing and collaborating with others is easier.\n\nWhat is git and what is github?\n\nGit is a version control software and Github is a tool where Git is hosted.\n\nWhat are the two main differences between a tibble and a data.frame?\n\nTibbles print in a more efficient and interpret-able way than data frames. They show the first couple of rows and columns and a count of the number of total observations and columns. Tibbles are also more strict and require consistent data types than data frames.\n\nRewrite the following nested function call using BaseR’s chaining operator:\narrange(filter(select(as_tibble(iris), starts_with(\"Petal\"), Species), Petal.Length &lt;1.55), Species)\n\niris |&gt;\nas_tibble() |&gt;\nselect(starts_with(\"Petal\"), Species) |&gt;\nfilter(Petal.Length &lt;1.55) |&gt;\narrange(Species)",
     "crumbs": [
       "Home",
       "Conceptual Questions"
