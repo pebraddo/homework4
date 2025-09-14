@@ -6,11 +6,19 @@ editor_options:
   chunk_output_type: inline
 ---
 
+Let's pull in the library we will need first, `tidyverse`.
+
+Now, let's read in the `glass.data` as a csv (as the raw data is separated with commas!). We also want to name the columns with the variables specified.
+
 ```{r}
 library(tidyverse) 
 glass <- read_csv("https://www4.stat.ncsu.edu/online/datasets/glass.data",col_names = c('Id','RI','Na', 'Mg', 'Al', 'Si', 'K', 'Ca', 'Ba', 'Fe', 'Type_of_Glass'))
 glass
 ```
+
+Now, we want to create a chain that overwrites the `Type_of_Glass` variable using `mutate()` and `ifelse()`. I made this into a new tibble called `glass_mutate` so I could really compare the two tibbles. Below, we are assigning new values like `building_windows_float_processed`, etc.
+
+After assigning these new values, we are filtering to `Fe` values less than 0.2 and the `Type_of_Glass` as tableware or headlamps.
 
 ```{r}
 glass_mutate <- glass |>
@@ -32,10 +40,14 @@ glass_mutate
 
 ```
 
+Let's work with the Yeast data now. We need to read it in with a tab separation between elements and name the columns.
+
 ```{r}
 yeast <- read_table('https://www4.stat.ncsu.edu/online/datasets/yeast.data', col_names = c('seq_name', 'mcg', 'gvh','alm','mit','erl','pox','vac','nuc','class'), show_col_types = FALSE)
 yeast
 ```
+
+Now, we want to select a few columns and mutate some of these to show their means and medians. We can also group these by `class`!
 
 ```{r}
 yeast |>
