@@ -6,6 +6,10 @@ editor_options:
   chunk_output_type: inline
 ---
 
-An example pages site with multiple pages and a table of contents.
+# Table of Contents for Homework 4
 
-This could be a landing page for the site. Feel free to put whatever here!
+-   [Conceptual Question](https://pebraddo.github.io/homework4/pages/concepts.html)
+
+-   [Reading Delimited Data](https://pebraddo.github.io/homework4/pages/read_delimited.html)
+
+-   [Combining Excel and Delimited Data](https://pebraddo.github.io/homework4/pages/combining.html)
